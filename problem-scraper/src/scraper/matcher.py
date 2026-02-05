@@ -13,7 +13,7 @@ class Conjecture:
 class OpenProblem:
     Title: str
     Label: str
-    Tags: []
+    Tags: list
     Description: str
 
 def findConjectures(filename: str):
@@ -39,11 +39,6 @@ def printOpenProblems(filename: str):
     for problem in findOpenProblems(filename):
         print(problem)
 
-#def toYaml(outstream, problems):
-#    print(yaml.dump_all(problems), file=outstream)
 def toYaml(outstream, problems):
     data = [obj.__dict__ for obj in problems]
-#    problemList = list()
-#    for problem in problems:
-#       problemList.append({'Title': problem.title, 'Label': problem.label, 'Tags': problem.tags, 'Description': problem.description})
     print(yaml.dump(data), file=outstream)
