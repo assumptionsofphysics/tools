@@ -3,7 +3,9 @@ import re
 from src.scraper import matcher
 
 def main():
-    matcher.printOpenProblems("../../book/pm_EnsembleSpaces.tex")
+    problems = matcher.findOpenProblems("tests/scraper/latexsample2.tex")
+    with open('test.yaml', 'w') as file:
+        matcher.toYaml(file, problems)
 
 
 
