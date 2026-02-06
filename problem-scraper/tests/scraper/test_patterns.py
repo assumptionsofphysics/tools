@@ -33,3 +33,11 @@ def test_toYaml():
   Title: Title2
 
 """
+
+
+def test_toJSON():
+        output = io.StringIO()
+        matcher.toJSON(output, sampleProblems())
+        output.seek(0)
+        assert output.read() == """[{"Title": "Title1", "Label": "label1", "Tags": ["Tag1", "Tag2"], "Description": "First description"}, {"Title": "Title2", "Label": "label2", "Tags": ["Tag1", "Tag3"], "Description": "Second description"}]
+"""

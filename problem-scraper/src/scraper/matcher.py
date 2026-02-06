@@ -3,6 +3,7 @@ import re
 from dataclasses import dataclass
 from . import patterns
 import yaml
+import json
 
 @dataclass
 class Conjecture:
@@ -42,3 +43,7 @@ def printOpenProblems(filename: str):
 def toYaml(outstream, problems):
     data = [obj.__dict__ for obj in problems]
     print(yaml.dump(data), file=outstream)
+
+def toJSON(outstream, problems):
+    data = [obj.__dict__ for obj in problems]
+    print(json.dumps(data), file=outstream)

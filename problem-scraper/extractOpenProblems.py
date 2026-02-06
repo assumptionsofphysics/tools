@@ -9,7 +9,7 @@ def main():
         for filename in sys.argv[2:]:
             print("Process file " + filename)
             problems = matcher.findOpenProblems(filename)
-            matcher.toYaml(output, problems)
+            matcher.toJSON(output, problems)
 
 if __name__ == "__main__":
     main()
