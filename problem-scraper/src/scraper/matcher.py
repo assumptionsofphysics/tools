@@ -12,10 +12,10 @@ class Conjecture:
 
 @dataclass
 class OpenProblem:
-    Title: str
-    Label: str
-    Tags: list
-    Description: str
+    title: str
+    label: str
+    tags: list
+    description: str
 
 def findConjectures(filename: str):
     print(filename)
