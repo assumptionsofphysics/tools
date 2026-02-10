@@ -36,6 +36,10 @@ def findOpenProblems(filename: str):
                                   [item.strip() for item in match.group(3).strip().split(",")], match.group(4).strip())
             yield problem
 
+def findOpenProblemsMultiple(filenames):
+    for filename in filenames:
+        yield from findOpenProblems(filename)
+
 def printOpenProblems(filename: str):
     for problem in findOpenProblems(filename):
         print(problem)

@@ -9,6 +9,14 @@ def test_findOpenProblems():
         assert problemList[0].tags == ["Tag1", "Tag2"]
         assert problemList[0].description == "This is the description"
 
+def test_findOpenProblemsMultiple():
+        problemList = list(matcher.findOpenProblemsMultiple(["tests/scraper/latexsample1.tex","tests/scraper/latexsample2.tex"]))
+        assert len(problemList) == 3
+        assert problemList[0].title == "Title"
+        assert problemList[0].label == "label"
+        assert problemList[0].tags == ["Tag1", "Tag2"]
+        assert problemList[0].description == "This is the description"
+
 def sampleProblems():
         problemList = [matcher.OpenProblem("Title1", "label1", ["Tag1", "Tag2"], "First description"),
                        matcher.OpenProblem("Title2", "label2", ["Tag1", "Tag3"], "Second description")]
