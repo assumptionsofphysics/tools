@@ -14,7 +14,9 @@ class Conjecture:
 class OpenProblem:
     title: str
     label: str
+    category: str
     tags: list
+    video: str
     description: str
 
 def findConjectures(filename: str):
@@ -28,12 +30,13 @@ def findConjectures(filename: str):
             print(conj)
 
 def findOpenProblems(filename: str):
-    with open(filename, "r") as file:
+    with open(filename, "r", encoding='utf-8') as file:
         content = file.read()
         matches = re.finditer(patterns.openproblem, content)
         for match in matches:
-            problem = OpenProblem(match.group(1).strip(), match.group(2).strip(),
-                                  [item.strip() for item in match.group(3).strip().split(",")], match.group(4).strip())
+            problem = OpenProblem(match.group(1).strip(), match.group(2).strip(),match.group(3).strip(),
+                                  [item.strip() for item in match.group(4).strip().split(",")],
+                                  match.group(5).strip(),  match.group(6).strip())
             yield problem
 
 def findOpenProblemsMultiple(filenames):
