@@ -1,0 +1,63 @@
+\documentclass{techbrief}
+
+\begin{document}
+
+\maketitle
+	
+\section{Introduction}
+
+In this note we compare vectors as they are used to represent directions in space to vectors as they are used to represent quantum states. Physically, the difference is that in the first case the linearity is in terms of components over directions, while in the second is in terms of probability. Mathematically, the difference is that quantum states correspond to rays (i.e. elements of the projective space), and not vector themselves.
+
+\section{States and spatial directions}
+
+A direction in space is identified by a normalized vector in a three dimensional space. Though these can be identifies by two angles, the linearity is best expressed in Cartesian components.
+\begin{equation}
+	\begin{aligned}
+		v^x e_x + v^y e_y + v^z e_z &= \cos \varphi \sin \theta e_x + \sin \varphi \sin \theta e_y + \cos \theta e_z \\
+		(v^x)^2 + (v^y)^2 + (v^z)^2 &= 1 \\
+		&= \cos^2 \varphi \sin^2 \theta + \sin^2 \varphi \sin^2 \theta + \cos^2 \theta \\
+		&= ( \cos^2 \varphi + \sin^2 \varphi ) \sin^2 \theta + \cos^2 \theta
+	\end{aligned}
+\end{equation}
+Note how the basis is composed by orthogonal directions in space and that the constraint is quadratic in those components.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.40\textwidth]{tempimages/DirectionalVectors.jpg}
+	\caption{On the left, quantum states on the projective space. On the right, quantum state on the vector space.}\label{directionsInSpace}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.75\textwidth]{tempimages/QuantumProbabilities.jpg}
+	\caption{On the left, quantum states on the projective space. On the right, quantum state on the vector space.}\label{stateSpace}
+\end{figure}
+
+In quantum mechanics, we are interested in probability of outcomes of a directional measurement. If we fix a direction, two outcomes are possible. For any other state, the probability of outcome must be proportional to the component in that direction. For a measurement along the $z$ direction, the probabilities must be:
+\begin{equation}
+	\begin{aligned}
+		p(z^+) &= \frac{\overline{A z^-}}{\overline{z^+ z^-}} = \frac{1+\cos \theta}{2} = \cos^2 \frac{\theta}{2} \\
+		p(z^-) &= \frac{\overline{z^+ A}}{\overline{z^+ z^-}} = \frac{1-\cos \theta}{2} = \sin^2 \frac{\theta}{2} \\
+		p(z^+) + p(z^-)&= 1 \\
+		&= (v^x)^2 + (v^y)^2 + (v^z)^2 = 1 \\
+		&= \frac{1+\cos \theta + 1-\cos \theta}{2} = \cos^2 \frac{\theta}{2} + \sin^2 \frac{\theta}{2}
+	\end{aligned}
+\end{equation}
+Note how the outcomes are a set of opposite direction and the constraint is linear. However, it can be re-expressed as quadratic in terms of the square root of the probability and half the angle. This is what allows us to represent states in a vector space.
+
+For a qubit, spin 1/2, two-state system, states are represented by
+\begin{equation}
+	\begin{aligned}
+		| \psi \> &= \cos \frac{\theta}{2} e^{-\imath \frac{\varphi}{2}} | z^+ \> + \sin \frac{\theta}{2} e^{\imath \frac{\varphi}{2}} | z^+ \> \\
+		p(z^+) &= \<\psi | z^+ \> \< z^+ | \psi \> = \cos \frac{\theta}{2} e^{\imath \frac{\varphi}{2}} \cos \frac{\theta}{2} e^{-\imath \frac{\varphi}{2}} = \cos^2 \frac{\theta}{2} \\
+	p(z^-) &= \<\psi | z^- \> \< z^- | \psi \> = \sin \frac{\theta}{2} e^{-\imath \frac{\varphi}{2}} \sin \frac{\theta}{2} e^{\imath \frac{\varphi}{2}} = \sin^2 \frac{\theta}{2} \\
+		\< \psi | \psi \> &= \cos \frac{\theta}{2} e^{\imath \frac{\varphi}{2}} \cos \frac{\theta}{2} e^{-\imath \frac{\varphi}{2}} + \sin \frac{\theta}{2} e^{-\imath \frac{\varphi}{2}} \sin \frac{\theta}{2} e^{\imath \frac{\varphi}{2}} \\
+		&= \cos^2 \frac{\theta}{2} + \sin^2 \frac{\theta}{2} \\
+	\end{aligned}
+\end{equation}
+The norm of the components, and therefore $\theta$, fixes the height of the vertical plane that cuts the sphere, while the phase, and therefore $\varphi$, fixes the angle along the identified circle.
+
+Multiple vectors represent the same state. For example, $\theta + 2\pi$ gives a different vector with negative components, but the same direction in the original space and the same probability. We can visualize the difference easily by restricting ourselves to the $(x,z)$ plane. A direction in physical space corresponds to a line that passes through the origin (i.e. a ray) in the vector space. A line returns to itself after half a turn.
+
+
+\end{document}
