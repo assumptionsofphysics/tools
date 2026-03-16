@@ -2,12 +2,14 @@ import re
 
 from dataclasses import dataclass
 from . import patterns
+from pathlib import Path
 import yaml
 import json
 
 
 @dataclass
 class TechnicalBrief:
+    filename: str
     title: str
     author: str
     abstract: str
@@ -23,8 +25,10 @@ class TechnicalBrief:
     videoPattern = r"\\video{(.*)?}"
 
 
-def matchTechnicalBrief(filename: str):
-    with open(filename, "r", encoding='utf-8') as file:
+def matchTechnicalBrief(path: str):
+    p = Path(path)
+    filename = p.stem
+    with open(path, "r", encoding='utf-8') as file:
         content = file.read()
         titleMatch = re.search(TechnicalBrief.titlePattern, content)
         authorMatch = re.search(TechnicalBrief.authorPattern, content)
@@ -32,6 +36,6 @@ def matchTechnicalBrief(filename: str):
         categoryMatch = re.search(TechnicalBrief.categoryPattern, content)
         tagsMatch = re.search(TechnicalBrief.tagsPattern, content)
         videoMatch = re.search(TechnicalBrief.videoPattern, content)
-        return TechnicalBrief(titleMatch and titleMatch.group(1).strip(), authorMatch and authorMatch.group(1).strip(), 
+        return TechnicalBrief(filename, titleMatch and titleMatch.group(1).strip(), authorMatch and authorMatch.group(1).strip(), 
                             abstractMatch and abstractMatch.group(1).strip(), categoryMatch and categoryMatch.group(1).strip(), 
                             [item.strip() for item in tagsMatch.group(1).strip().split(",")] if tagsMatch else [], videoMatch and videoMatch.group(1).strip())

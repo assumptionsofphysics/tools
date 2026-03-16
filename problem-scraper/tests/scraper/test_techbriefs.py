@@ -3,6 +3,7 @@ import io
 
 def test_matchTechBrief1():
         brief = parser.matchTechnicalBrief("tests/scraper/techbrief1.tex")
+        assert brief.filename == "techbrief1"
         assert brief.title == "Directional vectors vs quantum state vectors"
         assert brief.author == "Gabriele Carcassi"
         assert brief.abstract == """We show why a direction in physical space is represented by a vector for the form $\\cos \\varphi \\sin \\theta e_x + \\sin \\varphi \\sin \\theta e_y + \\cos \\theta e_z$ while the state vector for a qubit, which also corresponds to a direction in physical space, is of the form $\\cos \\frac{\\theta}{2} e^{-\\imath \\frac{\\varphi}{2}} | z^+ \\> + \\sin \\frac{\\theta}{2} e^{\\imath \\frac{\\varphi}{2}} | z^+ \\>$."""
@@ -12,6 +13,7 @@ def test_matchTechBrief1():
 
 def test_matchTechBrief2():
         brief = parser.matchTechnicalBrief("tests/scraper/techbrief2.tex")
+        assert brief.filename == "techbrief2"
         assert brief.title == None
         assert brief.author == None
         assert brief.abstract == None
@@ -21,6 +23,7 @@ def test_matchTechBrief2():
 
 def test_matchTechBrief3():
         brief = parser.matchTechnicalBrief("tests/scraper/techbrief3.tex")
+        assert brief.filename == "techbrief3"
         assert brief.title == "Directional vectors vs quantum state vectors"
         assert brief.author == "Gabriele Carcassi"
         assert brief.abstract == """We show why a direction in physical space is represented by a vector for the form $\\cos \\varphi \\sin \\theta e_x + \\sin \\varphi \\sin \\theta e_y + \\cos \\theta e_z$ while the state vector for a qubit, which also corresponds to a direction in physical space, is of the form $\\cos \\frac{\\theta}{2} e^{-\\imath \\frac{\\varphi}{2}} | z^+ \\> + \\sin \\frac{\\theta}{2} e^{\\imath \\frac{\\varphi}{2}} | z^+ \\>$."""
